@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="title">{{grupo.descripcionGrupo}}</div>
+
+  <div class="miembros">
+    <h2>Miembros</h2>
+    <div *ngIf="listPersons.length > 0">
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    <tr *ngFor="let persona of listPersons">
+      <td>{{persona.nombrePersona}}</td>
+      <td>{{persona.apellidoPersona}}</td>
+    </tr>
+    </table>
+    </div>
+    <div>
+      <a (click)="addMiembro()"><button class="botonMiembro" type="button" name="button">Insertar miembro</button></a>
+    </div>
+  </div>
+  <div class="pagos" *ngIf="listPersons.length > 0">
+      <div class="gastos" *ngIf="listaGastos.length > 0">
+        <h2>Pagos</h2>
+      <ul>
+        <li *ngFor="let gasto of listaGastos">
+          <table>
+            <tr>
+              <td>Pagador: <b>{{gasto.idPersonaFk.nombrePersona}} {{gasto.idPersonaFk.apellidoPersona}}</b></td>
+              <td>Importe: <b>{{gasto.importe}} €</b></td>
+            </tr>
+            <tr>
+              <td>Concepto: <b>{{gasto.descripcionPago}}</b></td>
+              <td>Fecha: <b>{{gasto.fechaPago | date: 'dd-MM-yyyy'}}</b></td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <div class="balance">
+      <h2>Balance</h2>
+      <ul>
+        <li *ngFor="let miembro of listPersons">
+          {{miembro.nombrePersona}} {{miembro.apellidoPersona}}
+          <div class="divInline" *ngFor="let user of balanceMap | keyvalue">
+            <div class="divInline" *ngIf="user.key === miembro.idPersona">
+              <span *ngIf="media - user.value < 0 else negativo" class="saldoPositivo"> ===> {{(user.value - media) | number}} €</span>
+              <ng-template #negativo>
+                  <span class="saldoNegativo"> ===> {{(user.value - media) | number}} €</span>
+              </ng-template>
+            </div>
+          </div>
+        </li>
+    </ul>
+    </div>
+
+  </div>
+
+  <div class="addPago" *ngIf="listPersons.length > 0">
+    <a (click)="add()"><button class="boton" type="button" name="button">Insertar pago</button></a>
+  </div>
+
+</div>

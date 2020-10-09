@@ -1,0 +1,28 @@
+<div class="formulario">
+  <h2>Insertar gasto</h2>
+<form>
+  <div>
+  <label for="importe">Importe</label>
+  <input type="number" [(ngModel)]="gasto.importe" placeholder="Importe" name="importe"/>
+  </div>
+  <div>
+  <label for="desc">Descripcion</label>
+  <input type="text" [(ngModel)]="gasto.descripcionPago" placeholder="Descripcion" name="desc"/>
+  </div>
+  <div>
+  <label for="fecha">Fecha</label>
+  <input type="date" [(ngModel)]="gasto.fechaPago" placeholder="Fecha" name="fecha"/>
+  </div>
+  <div>
+  <label for="persona">Realiza el pago:</label>
+  <select [(ngModel)]="persona.idPersona" name="persona" id="persona" [ngModelOptions]="{standalone: true}">
+    <option *ngFor="let u of listPersons" [value]="u.idPersona">
+      {{u.nombrePersona}} {{u.apellidoPersona}}
+    </option>
+  </select>
+  </div>
+  <div>
+    <button class="btn" type="submit" (click)="addGasto()">Insertar</button>
+  </div>
+</form>
+</div>

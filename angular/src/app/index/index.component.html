@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="grupos">
+    <h2> Lista de grupos</h2>
+    <div class=tabla>
+      <table>
+        <tr>
+          <th>ID GRUPO</th>
+          <th>NOMBRE</th>
+          <th>IR</th>
+        </tr>
+        <tr *ngFor="let grupo of listaGrupos">
+          <td>{{grupo.idGrupo}}</td>
+          <td>{{grupo.descripcionGrupo}}</td>
+          <td><a [routerLink] = "['/show', grupo.idGrupo]"><button class="btnIr">🔍</button></a></td>
+        </tr>
+      </table>
+    </div>
+      <a [routerLink] = "['/addgrupo']"><button class ="btnAdd" type="button" name="button">Crear grupo</button></a>
+  </div>
+</div>

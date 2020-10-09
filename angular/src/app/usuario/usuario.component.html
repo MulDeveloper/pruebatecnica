@@ -1,0 +1,10 @@
+<div class="formulario">
+  <h2>Insertar mimebro</h2>
+  <form>
+    <input [(ngModel)]="user.nombrePersona" placeholder="Nombre" name="nombre"/>
+    <input [(ngModel)]="user.apellidoPersona" placeholder="Apellido" name="apellido"/>
+    <div>
+      <button class="btn" type="submit" (click)="addUser()">Insertar</button>
+    </div>
+  </form>
+</div>

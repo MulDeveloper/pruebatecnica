@@ -1,0 +1,21 @@
+micronaut:
+    server:
+        cors:
+            enabled: true
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:postgresql://localhost:5432/muestraprueba`}
+    driverClassName: org.postgresql.Driver
+    username: ${JDBC_USER:pt}
+    password: ${JDBC_PASSWORD:pt}
+
+jpa:
+  default:
+    entity-scan:
+        packages: 'pruebatecnica.domain'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: false
+        format_sql: true
